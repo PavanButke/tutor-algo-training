@@ -1,0 +1,8 @@
+package com.training.productapp;
+
+public class Product {
+	
+	private  String nameOfDevice;
+	private int price;
+
+}
