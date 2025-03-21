@@ -14,6 +14,7 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSourceResolvable;
 import org.springframework.context.NoSuchMessageException;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.ResolvableType;
 import org.springframework.core.env.Environment;
@@ -23,9 +24,10 @@ public class App {
 	
 	public static void main(String ...args)
 	{
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		//ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		
-		Product prod = (Product) context.getBean(Product.class , "p1");
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
+		Product prod = (Product) context.getBean(Product.class);
 		
 		System.out.println(prod);
 	}

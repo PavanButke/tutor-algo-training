@@ -1,9 +1,17 @@
 package com.training.productapp;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Product {
-	
+//	@Value("${nameOfDevice}")
 	private  String nameOfDevice;
+	
+//	@Value("${price}")
 	private int price;
+	
+//	@Value("${c")
 	private String company;
 	
 	public Product() {
