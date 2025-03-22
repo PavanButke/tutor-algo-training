@@ -1,9 +1,8 @@
 package com.training.product.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,20 +10,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.product.model.ProductDto;
+import com.training.product.service.ProductServiceImpl;
 
 
 @RestController
 @RequestMapping("/app")
 public class ProductController {
+	
+	//Field based injection
+	@Autowired
+	ProductServiceImpl productServiceImpl;
 
 	@GetMapping(value="/products" )
 	public List<ProductDto> getProducts()
 	{
-		return null;
+		return productServiceImpl.getProducts();
 		
 	}
 	
@@ -33,7 +36,7 @@ public class ProductController {
 	{
 		
 		
-		return null;
+		return productServiceImpl.getProductById(productId);
 		
 	}
 	
@@ -42,7 +45,7 @@ public class ProductController {
 	public ProductDto setProduct(@RequestBody ProductDto product)
 	{
 			
-		return product;
+		return productServiceImpl.setProduct(product);
 		
 	}
 	
@@ -50,7 +53,7 @@ public class ProductController {
 	public List<ProductDto> updateProduct(@PathVariable("productId") int productId, @RequestBody ProductDto product) {    
 
 	    
-		return null;
+		return productServiceImpl.updateProduct(productId, product);
 	    
 	}
 	
@@ -58,7 +61,7 @@ public class ProductController {
 	public String deleteProductById(@PathVariable("productId") int productId)
 	{
 		
-		return null;
+		return productServiceImpl.deleteProductById(productId);
 		
 	}
 }

@@ -25,7 +25,6 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Override
 	public List<ProductDto> getProducts() {
-		// TODO Auto-generated method stub
 		return dtos;
 	}
 
