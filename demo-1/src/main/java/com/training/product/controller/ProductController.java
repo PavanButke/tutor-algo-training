@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,6 +52,7 @@ public class ProductController {
 		
 	}
 	
+	@PutMapping(value="/updateProduct/{productId}")
 	public List<ProductDto> updateProduct(@PathVariable("productId") int productId, @RequestBody ProductDto product) {    
 
 	    ProductDto updateProduct = getProductById(productId);
@@ -58,6 +60,7 @@ public class ProductController {
 	        updateProduct.setProductName(product.getProductName());
 	        updateProduct.setProductPrice(product.getProductPrice());
 	        updateProduct.setProductCatagory(product.getProductCatagory());
+	        dtos.add(updateProduct);
 	        return dtos;
 	        
 	    }
