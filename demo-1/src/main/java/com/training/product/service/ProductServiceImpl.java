@@ -1,11 +1,14 @@
 package com.training.product.service;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
+import com.training.product.exception.ProductExistsAlready;
 import com.training.product.model.ProductDto;
 import com.training.product.repo.ProductRepository;
 
@@ -37,6 +40,8 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public ProductDto getProductById(int productId) {
+		
+	
 //		for(Product product: dtos)
 //		{
 //			if(product.getProductId()== productId)
@@ -51,7 +56,13 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public ProductDto setProduct(ProductDto product) {
 		
-		//dtos.add(product);
+		ProductDto productDto = productRepository.findById(product.getProductPrice()).orElse(null);
+		if(product != null)
+		{
+			throw new ProductExistsAlready("Product with product id: "+ productDto.getProductId()+" already exists.");
+		}
+			
+			
 		return productRepository.save(product);
 	}
 
@@ -83,7 +94,19 @@ public class ProductServiceImpl implements ProductService{
 
 	public List<ProductDto> getProductByName(String productName)
 	{
+		try {
+			checkResult();
+		}catch (ArithmeticException e) {
+			System.out.println(e.getMessage());
+		}
 		return productRepository.findByProductName(productName);
 		
+	}
+	
+	
+	
+	public void checkResult()
+	{
+		int result = 14/0;
 	}
 }
