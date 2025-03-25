@@ -56,6 +56,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public ProductDto setProduct(ProductDto productDto) {
 		
+//		dtos.add(productDto);
 		ProductDto product = productRepository.findById(productDto.getProductId()).orElse(null);
 		
 		if(product != null)
@@ -63,11 +64,17 @@ public class ProductServiceImpl implements ProductService{
 			throw new ProductExistsAlready("Product with productId: "+product.getProductId()+" already exists.");
 			
 		}
-		
-			
-		return productRepository.save(product);
-	}
+//		else if(productDto.getVendors() != null)
+//		{
+//			for(VendorDto vendor: productDto.getVendors())
+//			{
+//				vendor.setProductDto(productDto);
+//			}
+//		}
+//		
+		return productRepository.save(productDto);
 
+	}
 	@Override
 	public ProductDto updateProduct(int productId, ProductDto product) {
 		ProductDto updateProduct = getProductById(productId);
@@ -111,4 +118,12 @@ public class ProductServiceImpl implements ProductService{
 	{
 		int result = 14/0;
 	}
+
+	@Override
+	public int getProductCountByName(String productName) {
+		
+		return productRepository.getProductCount(productName);
+	}
+	
+
 }

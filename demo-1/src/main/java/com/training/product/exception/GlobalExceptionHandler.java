@@ -11,21 +11,16 @@ import com.training.product.model.ErrorResponse;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	
-	
-	
-	@ExceptionHandler(value= OutOfStockException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public @ResponseBody ErrorResponse errorResponseChecker(OutOfStockException ex)
-	{
-		return new ErrorResponse(HttpStatus.NOT_FOUND.value() , ex.getMessage());
+	@ExceptionHandler(value = OutOfStockException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND) 
+	public @ResponseBody ErrorResponse handleErrorResponse(OutOfStockException ex) {
+	    return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
 	}
 
-	@ExceptionHandler(value= ProductExistsAlready.class)
+	@ExceptionHandler(value = ProductExistsAlready.class)
 	@ResponseStatus(HttpStatus.CONFLICT)
-	public @ResponseBody ErrorResponse errorResponseChecker(ProductExistsAlready ex)
-	{
-		return new ErrorResponse(HttpStatus.CONFLICT.value() , ex.getMessage());
+	public @ResponseBody ErrorResponse handleErrorResponse(ProductExistsAlready ex) { 
+	    return new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
 	}
 
-	
 }

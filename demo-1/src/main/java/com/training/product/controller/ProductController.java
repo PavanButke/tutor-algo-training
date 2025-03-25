@@ -71,4 +71,10 @@ public class ProductController {
 	{
 		return productServiceImpl.getProductByName(productName);
 	}
+	
+	@GetMapping("/getProductCount")
+	public int getProductCount(@RequestParam("productName") String productName)
+	{
+		return productServiceImpl.getProductCountByName(productName);
+	}
 }
