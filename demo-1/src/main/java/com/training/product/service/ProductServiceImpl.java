@@ -54,14 +54,16 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public ProductDto setProduct(ProductDto product) {
+	public ProductDto setProduct(ProductDto productDto) {
 		
-		ProductDto productDto = productRepository.findById(product.getProductPrice()).orElse(null);
+		ProductDto product = productRepository.findById(productDto.getProductId()).orElse(null);
+		
 		if(product != null)
 		{
-			throw new ProductExistsAlready("Product with product id: "+ productDto.getProductId()+" already exists.");
-		}
+			throw new ProductExistsAlready("Product with productId: "+product.getProductId()+" already exists.");
 			
+		}
+		
 			
 		return productRepository.save(product);
 	}
