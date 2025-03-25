@@ -81,4 +81,9 @@ public class ProductServiceImpl implements ProductService{
 		return "Product with product id : "+productId+ " is deleted ";
 	}
 
+	public List<ProductDto> getProductByName(String productName)
+	{
+		return productRepository.findByProductName(productName);
+		
+	}
 }

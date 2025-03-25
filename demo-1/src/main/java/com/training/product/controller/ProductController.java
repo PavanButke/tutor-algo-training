@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.training.product.model.ProductDto;
@@ -63,5 +64,11 @@ public class ProductController {
 		
 		return productServiceImpl.deleteProductById(productId);
 		
+	}
+	
+	@GetMapping("/getByName")
+	public List<ProductDto> getProductByName(@RequestParam("productName") String productName)
+	{
+		return productServiceImpl.getProductByName(productName);
 	}
 }
