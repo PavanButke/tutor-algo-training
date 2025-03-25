@@ -50,7 +50,7 @@ public class ProductController {
 	}
 	
 	@PutMapping(value="/updateProduct/{productId}")
-	public List<ProductDto> updateProduct(@PathVariable("productId") int productId, @RequestBody ProductDto product) {    
+	public ProductDto updateProduct(@PathVariable("productId") int productId, @RequestBody ProductDto product) {    
 
 	    
 		return productServiceImpl.updateProduct(productId, product);

@@ -2,7 +2,6 @@ package com.training.product.model;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -12,13 +11,10 @@ public class ProductDto {
 	@Id
 	private int productId;
 	
-	@Column
 	private String productName;
-	
-	@Column
+
 	private Integer productPrice;
-	
-	@Column
+		
 	private String productCatagory;
 	
 	public ProductDto() {

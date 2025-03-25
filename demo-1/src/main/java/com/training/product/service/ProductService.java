@@ -12,7 +12,7 @@ public interface ProductService {
 	
 	public ProductDto setProduct(ProductDto product );
 	
-	public List<ProductDto> updateProduct(int productId , ProductDto product);
+	public ProductDto updateProduct(int productId , ProductDto product);
 	
 	public String deleteProductById(int productId);
 
